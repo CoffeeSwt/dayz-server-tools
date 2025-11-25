@@ -7,17 +7,19 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 
-	"dayz-server-tools/db"
+	"dayz-server-tools/app"
+	"dayz-server-tools/logger"
 )
 
 //go:embed all:frontend/dist
 var assets embed.FS
 
 func main() {
-	db.Init()
+	logger.SetOutput(logger.GetFileWriter())
 
+	logger.Info("正在启动Dayz Server Tools")
 	// Create an instance of the app structure
-	app := NewApp()
+	a := app.NewApp()
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -27,15 +29,15 @@ func main() {
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
-		OnStartup: app.startup,
-		Bind: []interface{}{
-			app,
-		},
+		OnStartup: a.Startup,
+		Bind: append([]interface{}{
+			a,
+		}, app.GetBind()...),
 		Frameless:        true,
 		WindowStartState: options.Minimised,
 	})
 
 	if err != nil {
-		println("Error:", err.Error())
+		logger.Error("Wails 启动失败:", "error", err.Error())
 	}
 }

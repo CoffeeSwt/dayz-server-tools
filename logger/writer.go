@@ -27,8 +27,8 @@ type FileWriter struct {
 var fileWriter *FileWriter
 var writerOnce sync.Once
 
-// InitFileLogging 初始化文件日志功能
-func InitFileLogging() error {
+// initFileLogging 初始化文件日志功能
+func initFileLogging() error {
 	var err error
 	writerOnce.Do(func() {
 		// 获取工作目录
@@ -282,6 +282,12 @@ func (fw *FileWriter) Close() error {
 
 // GetFileWriter 获取文件写入器实例
 func GetFileWriter() *FileWriter {
+	if fileWriter == nil {
+		err := initFileLogging()
+		if err != nil {
+			panic("初始化文件日志失败")
+		}
+	}
 	return fileWriter
 }
 

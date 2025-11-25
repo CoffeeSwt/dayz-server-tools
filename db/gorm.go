@@ -20,6 +20,17 @@ var (
 	dbOnce sync.Once
 )
 
+func GetDB() *gorm.DB {
+	dbOnce.Do(initDB)
+	return _db
+}
+
+func GetSQLDB() *sql.DB {
+	dbOnce.Do(initDB)
+	s, _ := _db.DB()
+	return s
+}
+
 func ensureDBFile(path string) error {
 	if path == "" {
 		path = config.GetDBPath()
@@ -65,6 +76,14 @@ func initDB() {
 	_db.Exec("PRAGMA foreign_keys = ON;")
 	_db.Exec("PRAGMA journal_mode = WAL;")
 	_db.Exec("PRAGMA busy_timeout = 5000;")
+
+	s, err := _db.DB()
+	if err != nil {
+		panic(err)
+	}
+	if err := s.Ping(); err != nil {
+		panic(err)
+	}
 }
 
 func applyPool(s *sql.DB) {
@@ -98,27 +117,4 @@ func parseDurationEnv(key string, def time.Duration) time.Duration {
 		return d
 	}
 	return def
-}
-
-func GetDB() *gorm.DB {
-	dbOnce.Do(initDB)
-	return _db
-}
-
-func GetSQLDB() *sql.DB {
-	dbOnce.Do(initDB)
-	s, _ := _db.DB()
-	return s
-}
-
-func Init() error {
-	dbOnce.Do(initDB)
-	s, err := _db.DB()
-	if err != nil {
-		return err
-	}
-	if err := s.Ping(); err != nil {
-		return err
-	}
-	return nil
 }
