@@ -1,0 +1,11 @@
+build/bin
+node_modules
+frontend/dist
+/.env
+/database.db
+/database.db-shm
+/database.db-wal
+/build
+/frontend/wailsjs
+/go.sum
+/frontend/package.json.md5

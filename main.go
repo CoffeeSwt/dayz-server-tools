@@ -1,0 +1,41 @@
+package main
+
+import (
+	"embed"
+
+	"github.com/wailsapp/wails/v2"
+	"github.com/wailsapp/wails/v2/pkg/options"
+	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
+
+	"dayz-server-tools/db"
+)
+
+//go:embed all:frontend/dist
+var assets embed.FS
+
+func main() {
+	db.Init()
+
+	// Create an instance of the app structure
+	app := NewApp()
+
+	// Create application with options
+	err := wails.Run(&options.App{
+		Title:  "Dayz Server Tools",
+		Width:  1056,
+		Height: 752,
+		AssetServer: &assetserver.Options{
+			Assets: assets,
+		},
+		OnStartup: app.startup,
+		Bind: []interface{}{
+			app,
+		},
+		Frameless:        true,
+		WindowStartState: options.Minimised,
+	})
+
+	if err != nil {
+		println("Error:", err.Error())
+	}
+}
