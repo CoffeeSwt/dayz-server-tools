@@ -1,9 +1,10 @@
 package app
 
-import "dayz-server-tools/db"
+var bindedObjects []interface{}
 
+// GetBind returns the binded objects for the app
 func GetBind() []interface{} {
 	var customBind []interface{}
-	customBind = append(customBind, db.GetOrm())
+	customBind = append(customBind, bindedObjects...)
 	return customBind
 }
