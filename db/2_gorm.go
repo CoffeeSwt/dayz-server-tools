@@ -3,7 +3,6 @@ package db
 import (
 	"database/sql"
 	"dayz-server-tools/logger"
-	"dayz-server-tools/model"
 	"os"
 	"path/filepath"
 	"sync"
@@ -54,10 +53,10 @@ func initDB() {
 	}
 
 	// 注册模型
-	if err := model.RegisterModel(_db); err != nil {
+	if err := RegisterModel(_db); err != nil {
 		panic(err)
 	}
-
+	InitData()
 }
 
 func ensureDBFile(path string) error {

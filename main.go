@@ -20,6 +20,8 @@ func main() {
 	logger.Info("正在启动Dayz Server Tools")
 	// Create an instance of the app structure
 	a := app.NewApp()
+	db := app.NewDB()
+	db.CheckConnection()
 
 	// Create application with options
 	err := wails.Run(&options.App{
