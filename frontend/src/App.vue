@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div w-full h-full flex flex-col>
+  <div w-screen h-screen flex flex-col>
     <RouterView></RouterView>
   </div>
 </template>

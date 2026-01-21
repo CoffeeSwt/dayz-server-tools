@@ -2,3 +2,20 @@ body {
   margin: 0;
   padding: 0;
 }
+
+::view-transition-old(root) {
+  animation: none;
+}
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+  animation: clip 0.35s ease-in;
+}
+
+@keyframes clip {
+  from {
+    clip-path: circle(0% at var(--x) var(--y));
+  }
+  to{
+    clip-path: circle(100% at var(--x) var(--y));
+  }
+}

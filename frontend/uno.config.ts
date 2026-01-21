@@ -11,7 +11,9 @@ import {
 
 export default defineConfig({
     shortcuts: [
-        // ...
+        {
+            'size-full': 'w-full h-full',
+        },
     ],
     theme: {
         colors: {

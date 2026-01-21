@@ -3,7 +3,7 @@
         <div w-full h-16 bg-gray-800 text-white flex items-center justify-center>
             <Header></Header>
         </div>
-        <div w-full h-full flex>
+        <div w-full h-full flex flex-grow-1>
             <div h-full bg-gray-200 flex-shrink-0 overflow-hidden :class="{ 'w-0': !showAside, 'w-51': showAside }"
                 duration="300ms">
                 <Aside></Aside>
