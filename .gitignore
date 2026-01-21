@@ -10,3 +10,4 @@ frontend/dist
 /go.sum
 /frontend/package.json.md5
 /logs
+/.figma

@@ -3,7 +3,7 @@ import './style.css'
 import App from './App.vue'
 import router from './router/index.ts'
 import store from './store/index.ts'
-
+import 'virtual:uno.css'
 const app = createApp(App)
 
 app.use(store)
