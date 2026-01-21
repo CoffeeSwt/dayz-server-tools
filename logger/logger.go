@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"dayz-server-tools/config"
 	"fmt"
 	"io"
 	"os"
@@ -113,9 +112,6 @@ func formatLogForFile(level LogLevel, timestamp, location, message string, keyva
 // Log 主要的日志函数，支持日志级别、消息和键值对参数
 // 用法: Log(INFO, "用户登录", "user_id", 123, "ip", "192.168.1.1")
 func Log(level LogLevel, message string, keyvals ...interface{}) {
-	if level == DEBUG && config.GetMode() == "release" {
-		return
-	}
 	defaultLogger.logWithCaller(level, message, 3, keyvals...)
 }
 

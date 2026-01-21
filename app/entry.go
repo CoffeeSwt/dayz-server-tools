@@ -1,6 +1,8 @@
 package app
 
-var bindedObjects []interface{}
+var bindedObjects = []interface{}{
+	&DB{},
+}
 
 // GetBind returns the binded objects for the app
 func GetBind() []interface{} {

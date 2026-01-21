@@ -12,6 +12,7 @@ export default (mode: string) => {
       //设置别名
       alias: {
         '@': path.resolve(__dirname, './src'),
+        '@wails': path.resolve(__dirname, './wailsjs'),
       },
     },
     server: {

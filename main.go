@@ -23,9 +23,11 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "Dayz Server Tools",
-		Width:  1056,
-		Height: 752,
+		Title:     "Dayz Server Tools",
+		Width:     1056,
+		MinWidth:  1056,
+		Height:    752,
+		MinHeight: 752,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},

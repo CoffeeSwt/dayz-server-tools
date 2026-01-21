@@ -8,7 +8,8 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@wails/*": ["./wailsjs/*"]
     },
     /* Bundler mode */
     "moduleResolution": "node16",
@@ -28,6 +29,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "src/api/xhr/config.js",
+    "wailsjs/**/*.ts",
+    "wailsjs/**/*.js",
     "*.d.ts"
   ],
   "exclude": ["node_modules"],
