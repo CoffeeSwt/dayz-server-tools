@@ -2,7 +2,8 @@ import { defineStore } from 'pinia'
 import { useDark, useToggle, useMouse } from '@vueuse/core'
 // 第一个参数是应用程序中 store 的唯一 id
 const useThemeStore = defineStore('theme', () => {
-    const toggleDarkFunc = useToggle(useDark())
+    const isDark = useDark()
+    const toggleDarkFunc = useToggle(isDark)
     const { x, y } = useMouse()
     const toggleDark = () => {
         document.documentElement.style.setProperty('--x', x.value + 'px')
@@ -15,7 +16,7 @@ const useThemeStore = defineStore('theme', () => {
             toggleDarkFunc()
         }
     }
-    return { toggleDark }
+    return { toggleDark, isDark }
 })
 
 export { useThemeStore } 

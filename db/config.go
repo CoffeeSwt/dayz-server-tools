@@ -1,38 +1,10 @@
 package db
 
-import (
-	"errors"
-
-	"gorm.io/gorm"
-)
-
 type Config struct {
 	BaseModel
-}
+	ServerToolsAbsPath string `json:"server_tools_abs_path"` // 服务器工具绝对路径
 
-func (c *Config) GetConfig() (*Config, error) {
-	if err := GetDB().First(c).Error; err != nil {
-		return nil, err
-	}
-	return c, nil
-}
-
-// 主题 'light' or 'dark'
-func (c *Config) SetConfig(theme string) error {
-	if theme != "light" && theme != "dark" {
-		return errors.New("theme must be 'light' or 'dark'")
-	}
-	var config Config
-	if err := GetDB().Where("id = ?", 1).First(&config).Error; err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			GetDB().Create(&Config{})
-			return nil
-		}
-		return err
-	} else {
-		if err := GetDB().Save(&config).Error; err != nil {
-			return err
-		}
-	}
-	return nil
+	SteamPath      string `json:"steam_path"`       // steam路径
+	DayZPath       string `json:"dayz_path"`        // dayz路径
+	DayZServerPath string `json:"dayz_server_path"` // dayz服务器路径
 }

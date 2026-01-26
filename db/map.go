@@ -16,21 +16,21 @@ func GetMapInit() func() {
 			MapChinese:  "切尔那鲁斯",
 			MissionName: "dayzOffline.chernarusplus",
 			Tips:        "官方默认地图",
-			Image:       "chernarusplus.jpg",
+			Image:       "/static/images/chernarusplus.jpg",
 		},
 		{
 			Name:        "enoch",
 			MapChinese:  "利沃利亚",
 			MissionName: "dayzOffline.enoch",
 			Tips:        "官方DLC地图",
-			Image:       "enoch.jpg",
+			Image:       "/static/images/enoch.jpg",
 		},
 		{
 			Name:        "sakhal",
 			MapChinese:  "萨哈尔",
 			MissionName: "dayzOffline.sakhal",
 			Tips:        "官方DLC地图",
-			Image:       "sakhal.jpg",
+			Image:       "/static/images/sakhal.jpg",
 		},
 	}
 	return func() {

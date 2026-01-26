@@ -1,14 +1,14 @@
 <template>
     <div w-full h-full flex flex-col>
-        <div w-full h-16 bg-gray-800 text-white flex items-center justify-center>
+        <div w-full h-16 shrink-0 text-white draggable>
             <Header></Header>
         </div>
-        <div w-full h-full flex flex-grow-1>
+        <div w-full flex flex-grow-1 overflow-hidden>
             <div h-full bg-gray-200 flex-shrink-0 overflow-hidden :class="{ 'w-0': !showAside, 'w-51': showAside }"
                 duration="300ms">
                 <Aside></Aside>
             </div>
-            <div w-full h-full>
+            <div w-full>
                 <Main></Main>
             </div>
         </div>

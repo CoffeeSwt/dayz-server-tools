@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@iconify-json/skill-icons": "^1.2.3",
+    "@iconify/json": "^2.2.430",
     "@types/node": "^22.18.6",
     "@vitejs/plugin-vue": "^5.2.4",
     "typescript": "^5.9.2",
