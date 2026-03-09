@@ -1,12 +1,11 @@
 <template>
     <div size-full box-border overflow-hidden>
         <div size-full overflow-auto p-4 box-border class="custom-scrollbar">
-            <div w-full grid grid-cols-4 gap-4>
+            <div w-full grid grid-cols-3 gap-4>
                 <template v-for="item in serverList">
-                    <ServerCard aspect-ratio="5/4" bg-red />
+                    <ServerCard aspect-ratio="16/11" :server="item"></ServerCard>
                 </template>
             </div>
-
         </div>
     </div>
 </template>
@@ -16,43 +15,23 @@ import { onMounted } from 'vue'
 import ServerCard from '@/components/ServerCard.vue'
 import { ref } from 'vue'
 import { Server } from '@/types/server.ts'
-const serverList = ref<Server[]>([])
+import { useLayoutStore } from '@/store/modules/layout.ts'
 
+const { setShowAside } = useLayoutStore()
 onMounted(() => {
+    setShowAside(true)
+})
+const serverList = ref<Server[]>([])
+onMounted(() => {
+    // 初始化服务器列表
     serverList.value = [
         {
             id: 1,
             name: '服务器1',
-            ip: '127.0.0.1',
             port: 2302,
-            password: '123456',
-            status: '运行中',
-        },
-        {
-            id: 1,
-            name: '服务器1',
-            ip: '127.0.0.1',
-            port: 2302,
-            password: '123456',
-            status: '运行中',
-        },
-        {
-            id: 1,
-            name: '服务器1',
-            ip: '127.0.0.1',
-            port: 2302,
-            password: '123456',
-            status: '运行中',
-        },
-        {
-            id: 1,
-            name: '服务器1',
-            ip: '127.0.0.1',
-            port: 2302,
-            password: '123456',
-            status: '运行中',
-        },
+        }
     ]
+    // 添加新服务器
     serverList.value.push({
         newServer: true,
     })

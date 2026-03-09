@@ -12,6 +12,10 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+
+
+
+
 const menuList = [
   {
     name: '服务器',

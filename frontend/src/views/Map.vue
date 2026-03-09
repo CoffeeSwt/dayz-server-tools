@@ -1,5 +1,5 @@
 <template>
-  <div size-full flex flex-col items-center justify-center>
+  <div size-full flex flex-col items-center justify-center mb-16>
     <div flex gap-6>
       <template v-for="item in maplist" :key="item.id">
         <MapCard :id="item.id" :mapName="item.mapName" :chineseName="item.chineseName" :image="item.image"

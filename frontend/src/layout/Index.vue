@@ -4,8 +4,7 @@
             <Header></Header>
         </div>
         <div w-full flex flex-grow-1 overflow-hidden>
-            <div h-full bg-gray-200 flex-shrink-0 overflow-hidden :class="{ 'w-0': !showAside, 'w-51': showAside }"
-                duration="300ms">
+            <div h-full bg-gray-200 flex-shrink-0 overflow-hidden :class="{ 'w-0': !showAside, 'w-51': showAside }">
                 <Aside></Aside>
             </div>
             <div w-full>

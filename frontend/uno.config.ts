@@ -67,5 +67,6 @@ export default defineConfig({
         'i-material-symbols:dark-mode', // 暗色模式图标
         'i-material-symbols:chrome-maximize-outline', // 最大化图标
         'i-fluent:full-screen-minimize-20-filled', // 最小化图标
+        'i-material-symbols:arrow-back', // 返回图标
     ],
 })
