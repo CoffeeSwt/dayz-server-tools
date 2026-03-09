@@ -9,9 +9,14 @@
       <button @click="toggleDark" i-material-symbols:dark-mode dark:i-material-symbols:light-mode text-2xl
         cursor-pointer>
       </button>
-      <button i-codicon:chrome-minimize text-2xl cursor-pointer text-light-white-1></button>
-      <button i-material-symbols:chrome-maximize-outline text-2xl cursor-pointer text-light-white-1></button>
-      <button i-material-symbols:close-rounded text-2xl cursor-pointer text-light-white-1></button>
+      <button i-codicon:chrome-minimize text-2xl cursor-pointer text-light-white-1 @click="minimise"></button>
+      <button v-show="!isMaximised" i-material-symbols:chrome-maximize-outline text-2xl cursor-pointer
+        text-light-white-1 @click="toggleMaximise"></button>
+      <button v-show="isMaximised" i-fluent:full-screen-minimize-20-filled text-2xl cursor-pointer text-light-white-1
+        @click="toggleMaximise"></button>
+      <button i-material-symbols:close-rounded text-2xl cursor-pointer text-light-white-1 @click="handleClose"></button>
+      <ConfirmDialog v-model="confirmDialogVisible" title="关闭程序" message="确定要关闭程序吗？" @confirm="handleConfirmClose"
+        @cancel="handleCancel"></ConfirmDialog>
     </div>
   </div>
 </template>
@@ -19,7 +24,28 @@
 <script setup lang="ts">
 import { useThemeStore } from '@/store/modules/theme.ts'
 import { storeToRefs } from 'pinia'
+import { WindowMinimise } from '@wails/runtime/runtime.js'
+import ConfirmDialog from '@/components/common/ConfirmDialog.vue'
+import { ref } from 'vue'
+import { CloseApp } from '@wails/go/app/App.js'
+
+const confirmDialogVisible = ref(false)
+
 const themeStore = useThemeStore()
-const { toggleDark } = themeStore
-const { isDark } = storeToRefs(themeStore)
+const { toggleDark, toggleMaximise } = themeStore
+const { isDark, isMaximised } = storeToRefs(themeStore)
+const minimise = () => {
+  WindowMinimise()
+}
+const handleClose = () => {
+  confirmDialogVisible.value = true
+}
+const handleConfirmClose = () => {
+  console.log('close')
+  CloseApp()
+}
+const handleCancel = () => {
+  console.log('cancel')
+}
+
 </script>

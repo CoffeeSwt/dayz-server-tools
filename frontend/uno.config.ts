@@ -63,7 +63,9 @@ export default defineConfig({
         ...Array.from({ length: 128 }, (_, i) => `p-${i + 1}`),
         //@ts-ignore
         ...Array.from({ length: 128 }, (_, i) => `w-${i + 1}`),
-        'i-material-symbols:light-mode',
-        'i-material-symbols:dark-mode',
+        'i-material-symbols:light-mode', // 亮色模式图标
+        'i-material-symbols:dark-mode', // 暗色模式图标
+        'i-material-symbols:chrome-maximize-outline', // 最大化图标
+        'i-fluent:full-screen-minimize-20-filled', // 最小化图标
     ],
 })

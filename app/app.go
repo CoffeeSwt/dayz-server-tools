@@ -2,6 +2,8 @@ package app
 
 import (
 	"context"
+	"dayz-server-tools/logger"
+	"os"
 )
 
 // App struct
@@ -18,4 +20,11 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) Startup(ctx context.Context) {
 	a.ctx = ctx
+}
+
+func (a *App) CloseApp() {
+	a.ctx.Done()
+	logger.Info("应用程序关闭")
+
+	os.Exit(0)
 }
