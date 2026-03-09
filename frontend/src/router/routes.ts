@@ -8,6 +8,7 @@ export const routes: Array<RouteRecordRaw> = [
         children: [
             { path: '', name: 'Server', component: () => import('@/views/Server.vue') },
             { path: 'map', name: 'Map', component: () => import('@/views/Map.vue') },
+            { path: 'newServerConfig', name: 'NewServerConfig', component: () => import('@/views/NewServerConfig.vue') },
         ]
     },
 ]
