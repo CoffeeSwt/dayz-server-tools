@@ -1,5 +1,6 @@
 <template>
-    <div w-66 h-102 rounded-md overflow-hidden cursor-pointer class="group" relative @click="routeToServer">
+    <div w-66 h-102 rounded-md overflow-hidden cursor-pointer class="group" relative @click="routeToServer" scale-80
+    >
         <div w-full h-full group-hover:scale-110 duration-300 ease-in-out overflow-hidden>
             <div w-full h-full overflow-hidden relative>
                 <img :src="image" :style="{ transform: transform, transformOrigin: 'left top' }" />

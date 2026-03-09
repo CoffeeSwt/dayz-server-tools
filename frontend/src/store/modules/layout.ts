@@ -10,7 +10,14 @@ const useLayoutStore = defineStore('layout', () => {
     const setShowAside = (newVal: boolean) => {
         showAside.value = newVal
     }
-    return { showAside, toggleShowAside, setShowAside }
+    const showLogo = ref(true)
+    const toggleShowLogo = () => {
+        showLogo.value = !showLogo.value
+    }
+    const setShowLogo = (newVal: boolean) => {
+        showLogo.value = newVal
+    }
+    return { showAside, toggleShowAside, setShowAside, showLogo, toggleShowLogo, setShowLogo }
 })
 
 export { useLayoutStore } 

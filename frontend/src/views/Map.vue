@@ -1,6 +1,6 @@
 <template>
   <div size-full flex flex-col items-center justify-center mb-16>
-    <div flex gap-6>
+    <div flex>
       <template v-for="item in maplist" :key="item.id">
         <MapCard :id="item.id" :mapName="item.mapName" :chineseName="item.chineseName" :image="item.image"
           :tips="item.tips" :missionName="item.missionName" :isWorkShopMap="item.isWorkShopMap"
@@ -49,6 +49,16 @@ const maplist = ref([
     missionName: 'Sakhal',
     isWorkShopMap: false,
     transform: "translate(-199px, -2px) scale(0.38)",
+  },
+  {
+    id: 4,
+    mapName: '',
+    chineseName: '创意工坊地图',
+    image: '/static/images/steam.png',
+    tips: '',
+    missionName: '',
+    isWorkShopMap: true,
+    transform: "translate(-222px, 0) scale(0.19)",
   },
 ])
 </script>
