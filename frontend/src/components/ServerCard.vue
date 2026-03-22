@@ -1,6 +1,6 @@
 <template>
     <div rounded-lg bg-red overflow-hidden>
-        <div size-full v-if="!server.newServer"></div>
+        <div v-if="!server.newServer" @click="testServer" bg-black size-full flex-center cursor-pointer></div>
         <div size-full class="group" v-if="server.newServer" flex-center cursor-pointer relative overflow-hidden
             @click="handleNewServer">
             <div size-full group-hover:scale-110 duration-300 ease-in-out overflow-hidden>
@@ -20,9 +20,10 @@
 <script setup lang="ts">
 import { Server } from '@/types/server.ts'
 import { useRouter } from 'vue-router'
+import { TestServerStart } from '@wails/go/app/Server.js'
 const router = useRouter()
 const newServerBgImagePath = '/static/images/new_server_bg.png'
-const transform = 'translate(-67px, -7px) scale(0.1)'
+const transform = 'translate(-158px, -91px) scale(0.17)'
 const props = defineProps({
     server: {
         type: Object as () => Server,
@@ -33,6 +34,10 @@ const handleNewServer = () => {
     router.push({
         path: '/layout/map',
     })
+}
+
+const testServer = () => {
+    TestServerStart()
 }
 </script>
 

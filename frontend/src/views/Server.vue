@@ -1,7 +1,7 @@
 <template>
     <div size-full box-border overflow-hidden>
-        <div size-full overflow-auto p-4 box-border class="custom-scrollbar">
-            <div w-full grid grid-cols-3 gap-4>
+        <div size-full overflow-auto p-4 xl:p-10 box-border class="custom-scrollbar">
+            <div w-full grid grid-cols-3 xl:grid-cols-4 gap-4>
                 <template v-for="item in serverList">
                     <ServerCard aspect-ratio="16/11" :server="item"></ServerCard>
                 </template>
@@ -26,6 +26,42 @@ onMounted(() => {
     // 初始化服务器列表
     serverList.value = [
         {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
+            id: 1,
+            name: '服务器1',
+            port: 2302,
+        }, {
             id: 1,
             name: '服务器1',
             port: 2302,

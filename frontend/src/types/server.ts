@@ -5,3 +5,13 @@ export interface Server {
     map?: string // 服务器地图
     newServer?: boolean // 是否为新服务器
 }
+
+const officialMapLinks = (mapNameEng:string)=>{
+    const map = new Map()
+    map.set('chernarusplus', {
+        mpmissionsPath:'/mpmissions/dayzOffline.chernarusplus',
+        mpmissionsCfgPath:'/serverCfg/chernarusplus.cfg',
+    })
+    map.set('dayz_epoch', 'https://dayz-epoch.fandom.com/wiki/Map')
+    return map.get(mapNameEng) || ''
+}

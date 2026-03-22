@@ -8,6 +8,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 
 	"dayz-server-tools/app"
+	"dayz-server-tools/db"
 	"dayz-server-tools/logger"
 )
 
@@ -20,8 +21,12 @@ func main() {
 	logger.Info("正在启动Dayz Server Tools")
 	// Create an instance of the app structure
 	a := app.NewApp()
-	db := app.NewDB()
-	db.CheckConnection()
+
+	// 初始化并检查数据库
+	if !db.CheckConnection() {
+		logger.Error("数据库连接失败")
+		return
+	}
 
 	// Create application with options
 	err := wails.Run(&options.App{

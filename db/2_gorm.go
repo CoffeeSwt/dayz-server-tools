@@ -84,3 +84,14 @@ func applyPool(s *sql.DB) {
 	s.SetConnMaxLifetime(1 * time.Hour)
 	s.SetConnMaxIdleTime(30 * time.Minute)
 }
+
+func CheckConnection() bool {
+	_db_base, err := GetDB().DB()
+	if err != nil {
+		return false
+	}
+	if err := _db_base.Ping(); err != nil {
+		return false
+	}
+	return true
+}
